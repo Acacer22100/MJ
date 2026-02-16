@@ -8,127 +8,57 @@
 }
 
 body {
-    font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    font-family: sans-serif;
     background-color: var(--bg-color);
     color: white;
-    margin: 0;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+    margin: 0; padding: 10px;
+    display: flex; flex-direction: column; align-items: center;
+    overflow-x: hidden; touch-action: manipulation;
 }
 
 .board {
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    gap: 4px;
-    width: 100%;
-    max-width: 500px;
-    background: rgba(0,0,0,0.3);
-    padding: 8px;
-    border-radius: 8px;
+    display: grid; grid-template-columns: repeat(9, 1fr); gap: 4px;
+    width: 100%; max-width: 500px;
+    background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px;
 }
 
 .tile {
-    background: var(--card-bg);
-    color: #000;
-    border-radius: 4px;
-    aspect-ratio: 3/4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    font-size: 0.85rem;
-    cursor: pointer;
-    position: relative;
+    background: var(--card-bg); color: #000; border-radius: 4px;
+    aspect-ratio: 3/4; display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 0.85rem; cursor: pointer; position: relative;
     box-shadow: 0 2px 0 #ccc;
 }
 
-.tile:active { transform: scale(0.92); }
+.tile.disabled { background: var(--disabled-bg); color: #666; opacity: 0.1; pointer-events: none; }
 
-.tile.disabled {
-    background: var(--disabled-bg);
-    color: #666;
-    opacity: 0.1;
-    pointer-events: none;
-}
-
-.tile .count {
-    position: absolute;
-    bottom: 1px;
-    right: 2px;
-    font-size: 0.6rem;
-    color: #d32f2f;
-}
+.tile .count { position: absolute; bottom: 1px; right: 2px; font-size: 0.6rem; color: #d32f2f; }
 
 .status-panel {
-    width: 95%;
-    max-width: 500px;
-    margin: 15px 0;
-    background: rgba(255,255,255,0.1);
-    padding: 12px;
-    border-radius: 8px;
+    width: 95%; max-width: 500px; margin: 15px 0;
+    background: rgba(255,255,255,0.1); padding: 12px; border-radius: 8px;
 }
 
 .section-title { font-size: 0.8rem; margin-bottom: 5px; color: var(--accent-color); }
 
 .display-area {
-    min-height: 45px;
-    background: rgba(0,0,0,0.2);
-    margin-bottom: 10px;
-    padding: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    border: 1px dashed rgba(255,255,255,0.2);
-    border-radius: 4px;
+    min-height: 45px; background: rgba(0,0,0,0.2); margin-bottom: 10px;
+    padding: 8px; display: flex; flex-wrap: wrap; gap: 5px;
+    border: 1px dashed rgba(255,255,255,0.2); border-radius: 4px;
 }
-
-#river-display { border: 1px dashed var(--accent-color); background: var(--river-bg); }
 
 .mini-tile {
-    background: #fff;
-    color: #000;
-    padding: 4px 8px;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    cursor: grab;
-    user-select: none;
+    background: #fff; color: #000; padding: 4px 8px;
+    border-radius: 3px; font-size: 0.8rem; font-weight: bold;
 }
-
-.mini-tile.dragging { opacity: 0.4; }
 
 .controls { display: flex; gap: 8px; width: 100%; max-width: 500px; }
 
-button {
-    padding: 12px 5px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
+button { padding: 12px 5px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
 
 .btn-mode { background: #0288d1; color: white; flex: 1.5; }
 .btn-sort { background: var(--sort-color); color: white; flex: 1; }
 .btn-reset { background: #c62828; color: white; flex: 1; }
+.btn-suggest { background: linear-gradient(145deg, #ff9800, #f57c00); color: white; font-size: 1.2rem; width: 100%; max-width: 500px; margin-top: 12px; }
 
-.btn-suggest { 
-    background: linear-gradient(145deg, #ff9800, #f57c00); 
-    color: white; 
-    font-size: 1.2rem; 
-    width: 100%; 
-    max-width: 500px; 
-    margin-top: 12px;
-}
-
-.active-mode { outline: 2px solid white; box-shadow: 0 0 8px #fff; }
-
-#ai-result {
-    font-size: 1.5rem;
-    margin-top: 20px;
-    color: #00ff00;
-    font-weight: bold;
-}
+.active-mode { outline: 2px solid white; }
+#ai-result { font-size: 1.5rem; margin-top: 20px; color: #00ff00; font-weight: bold; text-align: center; }

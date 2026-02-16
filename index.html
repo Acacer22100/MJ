@@ -1,21 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    <link rel="stylesheet" href="./style.css">
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>十億雀聖 - 實戰理牌助理</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <title>十億雀聖 - 手機助理</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -25,10 +14,8 @@
 
     <div class="status-panel">
         <div class="section-title">目前模式：<span id="mode-text">選取手牌 (0/17)</span></div>
-        
         <div class="section-title">我的手牌 (點擊理牌可排序)：</div>
         <div class="display-area" id="hand-display" ondragover="allowDrop(event)"></div>
-        
         <div class="section-title">牌池 (拖曳放手位置)：</div>
         <div class="display-area" id="river-display" ondragover="allowDrop(event)" ondrop="dropToRiver(event)"></div>
     </div>
@@ -43,11 +30,6 @@
     
     <div id="ai-result">等待輸入...</div>
 
-    <script src="/static/script.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
-</html>
-    <script  src="./script.js"></script>
-
-  </body>
-  
 </html>

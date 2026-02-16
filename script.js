@@ -23,7 +23,6 @@ function initBoard() {
     });
 }
 
-// 理牌：依照 萬、筒、條、字的順序排列
 function sortHand() {
     myHand.sort((a, b) => a - b);
     updateUI();
@@ -35,8 +34,6 @@ function handleTileClick(id) {
         if (myHand.length < 17) {
             myHand.push(id);
             counts[id]--;
-        } else {
-            alert("手牌已達 17 張！");
         }
     } else {
         river.push(id);
@@ -45,12 +42,10 @@ function handleTileClick(id) {
     updateUI();
 }
 
-// 拖曳邏輯
 function allowDrop(ev) { ev.preventDefault(); }
 
 function drag(ev, index) {
     ev.dataTransfer.setData("text", index);
-    ev.target.classList.add('dragging');
 }
 
 function dropToRiver(ev) {
@@ -72,20 +67,16 @@ function updateUI() {
         else el.classList.remove('disabled');
     });
 
-    const handDiv = document.getElementById('hand-display');
-    handDiv.innerHTML = myHand.map((id, index) => 
-        `<span class="mini-tile" draggable="true" 
-               ondragstart="drag(event, ${index})" 
-               ondragend="this.classList.remove('dragging')">${TILE_NAMES[id]}</span>`
+    document.getElementById('hand-display').innerHTML = myHand.map((id, index) => 
+        `<span class="mini-tile" draggable="true" ondragstart="drag(event, ${index})">${TILE_NAMES[id]}</span>`
     ).join('');
 
     document.getElementById('river-display').innerHTML = river.map(id => 
         `<span class="mini-tile">${TILE_NAMES[id]}</span>`
     ).join('');
     
-    if (isHandMode) {
-        document.getElementById('mode-text').innerText = `選取手牌 (${myHand.length}/17)`;
-    }
+    const txt = document.getElementById('mode-text');
+    if (isHandMode) txt.innerText = `選取手牌 (${myHand.length}/17)`;
 }
 
 function toggleMode() {
